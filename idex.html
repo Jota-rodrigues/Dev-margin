@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Margin — Como funciona o espaçamento em CSS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@400;700&family=Poppins:wght@400&family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="site-header__inner">
+      <span class="logo">margin<span class="logo__dot">;</span></span>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__bg" aria-hidden="true">
+      <span class="blob blob--1"></span>
+      <span class="blob blob--2"></span>
+      <span class="blob blob--3"></span>
+      <span class="blob blob--4"></span>
+      <span class="blob blob--5"></span>
+    </div>
+
+    <div class="hero__content">
+      <h1 class="hero__title">Margin</h1>
+      <p class="hero__subtitle">Oque é? Como funciona?</p>
+    </div>
+
+    <div class="box-model-diagram" role="img" aria-label="Diagrama do box model: margin, border, padding e conteúdo">
+      <div class="box-model-diagram__layer box-model-diagram__layer--margin">
+        <span class="box-model-diagram__label">Margin</span>
+        <div class="box-model-diagram__layer box-model-diagram__layer--border">
+          <span class="box-model-diagram__label">Border</span>
+          <div class="box-model-diagram__layer box-model-diagram__layer--padding">
+            <span class="box-model-diagram__label">Padding</span>
+            <div class="box-model-diagram__layer box-model-diagram__layer--content">
+              <span class="box-model-diagram__label box-model-diagram__label--content">Altura e Largura</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOX MODEL -->
+  <section class="box-model-section">
+    <h2 class="box-model-section__title">Box Model</h2>
+
+    <p class="box-model-section__filler">
+      O box model é a forma como o navegador calcula o espaço ocupado por cada elemento na página:
+      conteúdo, padding, border e margin, um dentro do outro, do centro para fora.
+    </p>
+
+    <pre class="code-card"><code>.caixa {
+    width: 200px;      /* content   */
+    padding: 16px;     /* padding   */
+    border: 2px solid; /* border    */
+    margin: 24px;      /* margin    */
+}</code></pre>
+  </section>
+
+  <!-- PARA QUE SERVE NA PRÁTICA -->
+  <section class="practical-section">
+    <div class="practical-section__intro">
+      <h2 class="practical-section__title">Para que serve na prática?</h2>
+      <p class="practical-section__subtitle">Margin é a principal ferramenta de espaçamento e composição de layout em CSS.</p>
+    </div>
+
+    <div class="practical-cards">
+      <article class="practical-card">
+        <h3 class="practical-card__title">Separar Elementos</h3>
+        <p class="practical-card__desc">Cria distância entre parágrafos, cards, seções — o "respiro" que evita que tudo pareça colado.</p>
+        <code class="practical-card__code">margin-bottom: 1.5rem;</code>
+      </article>
+
+      <article class="practical-card">
+        <h3 class="practical-card__title">Centralizar Blocos</h3>
+        <p class="practical-card__desc">Com largura definida, um bloco pode ser centralizado horizontalmente sem flexbox nem grid.</p>
+        <code class="practical-card__code">margin: 0 auto;</code>
+      </article>
+
+      <article class="practical-card">
+        <h3 class="practical-card__title">Ajuste fino de posição</h3>
+        <p class="practical-card__desc">Pequenos deslocamentos sem sair do fluxo normal do documento, sem recorrer a position.</p>
+        <code class="practical-card__code">margin-top: -4px;</code>
+      </article>
+
+      <article class="practical-card">
+        <h3 class="practical-card__title">Hierarquia visual</h3>
+        <p class="practical-card__desc">Espaçamentos maiores entre seções e menores entre itens relacionados comunicam estrutura antes mesmo da leitura.</p>
+        <code class="practical-card__code">margin: 4rem 0 1rem;</code>
+      </article>
+    </div>
+  </section>
+
+  <!-- COMPORTAMENTOS -->
+  <section class="behaviors-section">
+    <h2 class="behaviors-section__title">Comportamentos</h2>
+
+    <div class="behavior behavior--collapse">
+      <div class="behavior__text">
+        <h3 class="behavior__title">Colapso de margins</h3>
+        <p class="behavior__desc">Quando duas margens verticais de elementos irmãos se encontram, elas não se somam — o navegador usa apenas a maior das duas.</p>
+      </div>
+      <div class="behavior__demo">
+        <div class="demo-stack">
+          <div class="demo-box" id="collapse-box-1">caixa 1</div>
+          <div class="demo-box" id="collapse-box-2">caixa 2</div>
+        </div>
+        <p class="demo-readout">Gap real entre as caixas: <strong id="collapse-gap">0px</strong> <span id="collapse-note"></span></p>
+        <div class="demo-track">
+          <span class="demo-track__label">Margin-bottom Caixa 1: <strong id="collapse-val-1">0px</strong></span>
+          <input type="range" class="demo-range" id="collapse-range-1" min="0" max="60" value="0" step="1" aria-label="Margin-bottom da caixa 1">
+        </div>
+        <div class="demo-track">
+          <span class="demo-track__label">Margin-top Caixa 2: <strong id="collapse-val-2">0px</strong></span>
+          <input type="range" class="demo-range" id="collapse-range-2" min="0" max="60" value="0" step="1" aria-label="Margin-top da caixa 2">
+        </div>
+      </div>
+    </div>
+
+    <div class="behavior behavior--center">
+      <div class="behavior__text">
+        <h3 class="behavior__title">Centraliza blocos</h3>
+        <p class="behavior__desc">Com uma largura definida, margin-left e margin-right em auto dividem igualmente o espaço restante do contêiner — centralizando o bloco horizontalmente.</p>
+      </div>
+      <div class="behavior__demo">
+        <div class="demo-container">
+          <div class="demo-box demo-box--centered" id="center-box">caixa 1</div>
+        </div>
+        <div class="demo-track">
+          <span class="demo-track__label">Largura da caixa: <strong id="center-val">160px</strong></span>
+          <input type="range" class="demo-range" id="center-range" min="60" max="260" value="160" step="10" aria-label="Largura da caixa">
+        </div>
+        <span class="demo-apply">CSS aplicado: <code id="center-code">width: 160px; margin: 0 auto;</code></span>
+      </div>
+    </div>
+
+    <div class="behavior behavior--negative">
+      <div class="behavior__text">
+        <h3 class="behavior__title">Valores negativos</h3>
+        <p class="behavior__desc">Diferente de padding, a margin aceita valores negativos — puxando o elemento para mais perto (ou sobre) seus vizinhos.</p>
+      </div>
+      <div class="behavior__demo">
+        <div class="demo-stack-overlap">
+          <div class="demo-box demo-box--overlap-a" id="negative-box-2">caixa 2</div>
+          <div class="demo-box demo-box--overlap-b" id="negative-box-1">caixa 1</div>
+        </div>
+        <div class="demo-track">
+          <span class="demo-track__label">Margin-top Caixa 1: <strong id="negative-val">-20px</strong></span>
+          <input type="range" class="demo-range" id="negative-range" min="-60" max="40" value="-20" step="1" aria-label="Margin-top da caixa 1 (aceita negativo)">
+        </div>
+      </div>
+    </div>
+
+    <div class="behavior behavior--percent">
+      <div class="behavior__text">
+        <h3 class="behavior__title">Porcentagem relativa</h3>
+        <p class="behavior__desc">Margin em % é sempre calculada a partir da largura do contêiner pai — inclusive para margin-top e margin-bottom. Repare que os dois valores computados abaixo são sempre iguais.</p>
+      </div>
+      <div class="behavior__demo">
+        <div class="demo-percent-container" id="percent-container">
+          <div class="demo-box demo-box--small" id="percent-box">margin: 10%</div>
+        </div>
+        <div class="demo-track">
+          <span class="demo-track__label">Largura do container: <strong id="percent-container-val">400px</strong></span>
+          <input type="range" class="demo-range" id="percent-container-range" min="200" max="600" value="400" step="10" aria-label="Largura do container">
+        </div>
+        <p class="demo-readout">margin-top computada: <strong id="percent-top-val">40px</strong> &nbsp;|&nbsp; margin-left computada: <strong id="percent-left-val">40px</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLAYGROUND -->
+  <section class="playground-section">
+    <div class="playground-section__intro">
+      <h2 class="playground-section__title">Defina a margin dos elementos você mesmo</h2>
+      <p class="playground-section__subtitle">Escolha um cartão, ajuste os quatro lados e veja o código CSS sendo gerado em tempo real.</p>
+    </div>
+
+    <div class="playground">
+      <div class="playground__preview" id="pg-preview">
+        <div class="playground__card playground__card--a" id="pg-card-a">Cartão A</div>
+        <div class="playground__card" id="pg-card-b">Cartão B</div>
+        <div class="playground__card" id="pg-card-c">Cartão C</div>
+      </div>
+
+      <div class="playground__controls">
+        <div class="playground__tabs">
+          <button class="playground__tab playground__tab--active" type="button" data-card="a">Cartão A</button>
+          <button class="playground__tab" type="button" data-card="b">Cartão B</button>
+          <button class="playground__tab" type="button" data-card="c">Cartão C</button>
+        </div>
+
+        <div class="playground__sliders">
+          <div class="playground__slider-row">
+            <span class="playground__slider-label">margin-top</span>
+            <input type="range" class="playground__slider-track" id="pg-top" min="-20" max="80" value="0" step="1">
+            <span class="playground__slider-value" id="pg-top-val">0</span>
+          </div>
+          <div class="playground__slider-row">
+            <span class="playground__slider-label">margin-right</span>
+            <input type="range" class="playground__slider-track" id="pg-right" min="-20" max="80" value="0" step="1">
+            <span class="playground__slider-value" id="pg-right-val">0</span>
+          </div>
+          <div class="playground__slider-row">
+            <span class="playground__slider-label">margin-bottom</span>
+            <input type="range" class="playground__slider-track" id="pg-bottom" min="-20" max="80" value="0" step="1">
+            <span class="playground__slider-value" id="pg-bottom-val">0</span>
+          </div>
+          <div class="playground__slider-row">
+            <span class="playground__slider-label">margin-left</span>
+            <input type="range" class="playground__slider-track" id="pg-left" min="-20" max="80" value="0" step="1">
+            <span class="playground__slider-value" id="pg-left-val">0</span>
+          </div>
+        </div>
+
+        <button class="playground__reset" type="button" id="pg-reset">Zerar cartão atual</button>
+
+        <p class="playground__output-label" id="pg-output-label">CSS gerado — .cartao-a</p>
+        <pre class="playground__output"><code id="pg-output-code">.cartao-a {
+  margin: 0px 0px 0px 0px;
+}</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- SINTAXE RÁPIDA -->
+  <section class="syntax-section">
+    <h2 class="syntax-section__title">Sintaxe rápida</h2>
+    <p class="syntax-section__desc">A forma abreviada segue sempre o sentido horário: topo, direita, baixo, esquerda.</p>
+
+    <ul class="syntax-list">
+      <li><code>margin: 10px;</code><span>/* todos os lados */</span></li>
+      <li><code>margin: 10px 20px;</code><span>/* topo/baixo, direita/esquerda */</span></li>
+      <li><code>margin: 10px 20px 15px;</code><span>/* topo, direita/esquerda, baixo */</span></li>
+      <li><code>margin: 10px 20px 15px 5px;</code><span>/* topo, direita, baixo, esquerda */</span></li>
+      <li><code>margin-block: 10px;</code><span>/* topo + baixo (lógico) */</span></li>
+      <li><code>margin-inline: 20px;</code><span>/* esquerda + direita (lógico) */</span></li>
+    </ul>
+
+    <table class="syntax-table">
+      <thead>
+        <tr>
+          <th>Propriedade</th>
+          <th>Aceita</th>
+          <th>Relativo a</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>margin-top/bottom</td>
+          <td>px, %, em, rem, auto, negativo</td>
+          <td>largura do pai (quando em %)</td>
+        </tr>
+        <tr>
+          <td>margin-left/right</td>
+          <td>px, %, em, rem, auto, negativo</td>
+          <td>largura do pai (quando em %)</td>
+        </tr>
+        <tr>
+          <td>margin</td>
+          <td>1 a 4 valores, shorthand</td>
+          <td>—</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
